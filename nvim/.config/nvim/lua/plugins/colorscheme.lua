@@ -1,10 +1,18 @@
 return {
-  { "mofiqul/dracula.nvim" },
+  { "ellisonleao/gruvbox.nvim" },
+  { "Mofiqul/dracula.nvim" },
 
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "dracula",
+      colorscheme = "gruvbox",
+    },
+  },
+
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = {
+      transparent_mode = true,
     },
   },
 }
