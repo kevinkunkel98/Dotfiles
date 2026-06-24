@@ -8,6 +8,8 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 |---------|----------------|
 | `fish` | `~/.config/fish/` |
 | `ghostty` | `~/.config/ghostty/` |
+| `hypr` | `~/.config/hypr/` |
+| `kitty` | `~/.config/kitty/` |
 | `nvim` | `~/.config/nvim/` |
 | `lazygit` | `~/.config/lazygit/` |
 | `yazi` | `~/.config/yazi/` |
@@ -20,7 +22,7 @@ git clone <repo-url> ~/Documents/Dev/Dotfiles
 cd ~/Documents/Dev/Dotfiles
 
 # Stow everything at once
-stow fish ghostty nvim lazygit yazi
+stow fish ghostty hypr kitty nvim lazygit yazi
 
 # Or individually
 stow nvim
@@ -30,3 +32,6 @@ stow nvim
 
 - `fish_variables` is intentionally excluded (machine-specific PATH/env state).
 - `lazy-lock.json` is included so plugin versions are reproducible across machines.
+- `hypr/.config/hypr/.cache/` is intentionally excluded (runtime state: current theme/wallpaper/nightlight selection).
+- `hypr/.config/hypr/Wallpapers/` is intentionally excluded (personal media, not configuration).
+- `ghostty/.config/ghostty/theme.conf` and `kitty/.config/kitty/theme.conf` are relative symlinks to whichever file in `colors/` is currently active; `theme_select.sh` repoints them when you switch themes.
