@@ -12,6 +12,10 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 | `kitty` | `~/.config/kitty/` |
 | `nvim` | `~/.config/nvim/` |
 | `lazygit` | `~/.config/lazygit/` |
+| `rofi` | `~/.config/rofi/` |
+| `swaync` | `~/.config/swaync/` |
+| `waybar` | `~/.config/waybar/` |
+| `wlogout` | `~/.config/wlogout/` |
 | `yazi` | `~/.config/yazi/` |
 
 ## Setup
@@ -22,7 +26,7 @@ git clone <repo-url> ~/Documents/Dev/Dotfiles
 cd ~/Documents/Dev/Dotfiles
 
 # Stow everything at once
-stow fish ghostty hypr kitty nvim lazygit yazi
+stow fish ghostty hypr kitty nvim lazygit rofi swaync waybar wlogout yazi
 
 # Or individually
 stow nvim

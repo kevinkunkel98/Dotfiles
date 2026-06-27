@@ -1,16 +1,44 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+# disable fish greeting and vi mode
+set fish_greeting
+fish_vi_key_bindings
 
-# overwrite greeting — disable fastfetch
-function fish_greeting
+#===============================================#
+#           enable starship prompt
+#===============================================#
+set --export STARSHIP_CONFIG ~/.config/fish/starship/starship-simple.toml
+
+if status is-interactive
+    function starship_transient_prompt_func
+      starship module character
+    end
+    starship init fish | source
+    enable_transience
 end
 
-# Age of Empires 3 DE - Savegame Ordner
-alias aoe3='cd ~/.local/share/Steam/steamapps/compatdata/933110/pfx/drive_c/users/steamuser/Games/Age\ of\ Empires\ 3\ DE/76561199735526387/Savegame'
 
-# opencode
-fish_add_path /home/kevin/.opencode/bin
+#===============================================#
+#           aliases and functions
+#===============================================#
+source ~/.config/fish/conf.d/aliases.fish
+source ~/.config/fish/functions/functions.fish
+source ~/.config/fish/conf.d/personal.fish
+
+#===============================================#
+#           zoxide and thefuck
+#===============================================#
+zoxide init fish | source
+thefuck --alias | source
+
+
+if command -v fastfetch > /dev/null
+    # Only run fastfetch if we're in an interactive shell
+    if status --is-interactive
+        if test -d "$HOME/.local/share/fastfetch"
+            set ffconfig ascii-art
+            fastfetch --config "$ffconfig"
+        else
+            fastfetch
+        end
+    end
+end
 export PATH="$HOME/.local/bin:$PATH"
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

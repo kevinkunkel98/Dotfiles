@@ -1,1 +1,8 @@
 .claude/
+
+# Large media — tracked locally via stow but not committed
+hypr/.config/hypr/Wallpapers/
+hypr/.config/hypr/sounds/
+
+# Machine-specific fish state
+fish/.config/fish/fish_variables
