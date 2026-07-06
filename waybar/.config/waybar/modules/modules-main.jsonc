@@ -147,7 +147,7 @@
             "4": [],
             "5": []
         },
-        "format": "{icon} {windows}",
+        "format": "{name}",
         "format-window-separator": " ",
         "window-rewrite-default": " ",
         "window-rewrite": {		
