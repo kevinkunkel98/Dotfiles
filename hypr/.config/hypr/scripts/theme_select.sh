@@ -138,5 +138,23 @@ if [[ -n "$kvTheme" && -n "$vscodeTheme" ]]; then
     fi
 fi
 
+# Setting Obsidian theme
+obsidianVault="$HOME/Documents/Dev/Uni/Obsidian-Sync/Machine Learning"
+obsidianAppearance="$obsidianVault/.obsidian/appearance.json"
+
+case "$theme" in
+    Catppuccin) obsidianTheme="Catppuccin" ;;
+    Everforest) obsidianTheme="Everforest" ;;
+    Gruvbox) obsidianTheme="Obsidian gruvbox" ;;
+    Neon) obsidianTheme="Atom" ;;
+    TokyoNight) obsidianTheme="Tokyo Night" ;;
+    *) obsidianTheme="" ;;
+esac
+
+if [[ -n "$obsidianTheme" && -f "$obsidianAppearance" ]]; then
+    tmpFile=$(mktemp)
+    jq --arg t "$obsidianTheme" '.cssTheme = $t' "$obsidianAppearance" > "$tmpFile" && mv "$tmpFile" "$obsidianAppearance"
+fi
+
 # Refresh the environment
 "$scrDir/Refresh.sh" &> /dev/null

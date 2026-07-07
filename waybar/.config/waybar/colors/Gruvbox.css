@@ -22,11 +22,11 @@
 /* Gruvbox Dark accent palette */
 @define-color base     #282828;
 @define-color mantle   #1d2021;
-@define-color mauve    #d3869b;
+@define-color mauve    #d79921;
 @define-color sky      #83a598;
 @define-color flamingo #fb4934;
 @define-color green    #b8bb26;
-@define-color lavender #d3869b;
+@define-color lavender #b8bb26;
 @define-color red      #cc241d;
 @define-color yellow   #d79921;
 @define-color peach    #fe8019;
