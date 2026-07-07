@@ -243,8 +243,7 @@ tooltip label {
 #custom-power_btn {
   color: @base;
   background-color: @red;
-  padding: 0 10px;
-  padding-right: 20px;
+  padding: 0 15px;
   margin-right: 10px;
   border-radius: 8px;
   font-size: 16px;
@@ -259,18 +258,20 @@ tooltip label {
 #network {
   color: @base;
   background-color: @green;
-  border-radius: 8px 0 0 8px;
+  border-radius: 8px;
   padding: 0 10px;
   font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
   border-bottom-color: shade(@green, 0.6);
 }
 
 #network.speed {
   color: @base;
   background-color: @green;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   padding: 0 10px;
-  margin-left: 0px;
+  margin-right: 10px;
   font-size: 16px;
   border-bottom-color: shade(@green, 0.6);
 }
