@@ -1,1 +1,1 @@
-../../colorschemes/Gruvbox.lua
+/home/kevin/.config/nvim/colorschemes/Catppuccin.lua

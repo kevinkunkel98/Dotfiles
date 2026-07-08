@@ -21,12 +21,7 @@ return {
   -- conda + venv switching via <leader>cv
   {
     "linux-cultist/venv-selector.nvim",
-    opts = {
-      anaconda_base_path = vim.fn.expand("~/miniconda3"),
-      anaconda_envs_path = vim.fn.expand("~/miniconda3/envs"),
-      search = true,
-      search_venv_managers = true,
-    },
+    opts = {},
   },
 
   -- inline plot/image output (ghostty supports kitty graphics protocol)
