@@ -77,6 +77,7 @@ safe_link "$HOME/.config/kitty/colors/${theme}.conf" "$HOME/.config/kitty/theme.
 safe_link "$HOME/.config/ghostty/colors/${theme}.conf" "$HOME/.config/ghostty/theme.conf"
 safe_link "$HOME/.config/waybar/colors/${theme}.css" "$HOME/.config/waybar/style/theme.css"
 safe_link "$HOME/.config/wlogout/colors/${theme}.css" "$HOME/.config/wlogout/colors.css"
+safe_link "$HOME/.config/nvim/colorschemes/${theme}.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
 
 if command -v swaync &>/dev/null; then
     safe_link "$HOME/.config/swaync/colors/${theme}.css" "$HOME/.config/swaync/colors.css"
@@ -93,6 +94,23 @@ if pgrep -x ghostty &>/dev/null; then
     gdbus call --session --dest com.mitchellh.ghostty \
         --object-path /com/mitchellh/ghostty \
         --method org.gtk.Actions.Activate 'reload-config' '[]' '{}' &>/dev/null
+fi
+
+# Apply new colorscheme dynamically to any running Neovim instances
+case "$theme" in
+    Catppuccin) nvimColorscheme="catppuccin-mocha" ;;
+    Everforest) nvimColorscheme="everforest" ;;
+    Gruvbox)    nvimColorscheme="gruvbox" ;;
+    TokyoNight) nvimColorscheme="tokyonight-night" ;;
+    Neon)       nvimColorscheme="tokyonight-storm" ;;
+    *)          nvimColorscheme="" ;;
+esac
+
+if [[ -n "$nvimColorscheme" ]]; then
+    for sock in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*.0; do
+        [[ -S "$sock" ]] || continue
+        nvim --server "$sock" --remote-send ":colorscheme ${nvimColorscheme}<CR>" &>/dev/null
+    done
 fi
 
 # Setting VS Code / Kvantum theme based on selection
